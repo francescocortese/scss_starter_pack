@@ -1,16 +1,7 @@
-# Sass Starter Pack
-
-A light package for compiling Sass and running a dev server
-
 ### Version
 1.0.0
 
-## Usage
-
-
 ### Installation
-
-Install the dependencies (gulp, gulp-sass, browser-sync)
 
 ```sh
 $ npm install

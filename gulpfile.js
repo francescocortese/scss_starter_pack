@@ -95,7 +95,7 @@ gulp.task('serve', ['sass'], function() {
 });
 
 // gulp run - generate build folder and run browserSync
-gulp.task('run', ['serve', 'fileinclude', 'copy-folders', 'scripts']);
+gulp.task('default', ['serve', 'fileinclude', 'copy-folders', 'scripts']);
 
 // gulp - generate only build folder
-gulp.task('default', ['sass', 'fileinclude', 'copy-folders', 'scripts']);
+gulp.task('build', ['sass', 'fileinclude', 'copy-folders', 'scripts']);

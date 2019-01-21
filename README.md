@@ -1,5 +1,5 @@
-# bootstrap-browsersync-scss-starter
-Bootstrap Starterkit working with scss, gulp, browsersync, gulp-file-include. Version 1.0
+# scss-starter-pack
+SCSS Starterkit working with scss, gulp, browsersync, gulp-file-include. Version 2.0
 
 ### Main Dependencies
 * browser-sync

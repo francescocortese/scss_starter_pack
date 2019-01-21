@@ -60,7 +60,9 @@ gulp.task('scripts', function () {
 // Compile SASS
 gulp.task('serve', ['sass'], function() {
     browserSync.init({
-        server: "./app/build/"
+        server: "./app/build/",
+        files       : [ './app/**' ],
+        watchEvents : [ 'change', 'add', 'unlink', 'addDir', 'unlinkDir' ]
     });
     // warch file-include for root and inc
     gulp.watch(['./app/inc/**/*.html', './app/*.html'], ['fileinclude-watch']);

@@ -3,3 +3,4 @@ node_modules
 app/build/
 .tmp
 .tmp/jscache
+app/.DS_Store

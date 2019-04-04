@@ -2,10 +2,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync').create(),
     postcss = require('gulp-postcss'),
-
     cssmin = require('gulp-cssmin'),
-
-
     autoprefixer = require('autoprefixer'),
     fileinclude = require('gulp-file-include')
     uglify = require("gulp-uglify"),

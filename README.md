@@ -9,6 +9,7 @@ SCSS Starterkit working with scss, gulp, browsersync, gulp-file-include. Version
 * gulp-uglify
 * stylelint
 * autoprefixer
+* gulp-cssmin
 
 ## Quick Start
 

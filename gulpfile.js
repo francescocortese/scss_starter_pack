@@ -108,7 +108,8 @@ gulp.task('copy-folders', function () {
     // Video folder
     del('./app/build/video/**/*');
     gulp.src('./app/video/**/*')
-        .pipe(gulp.dest('./app/build/video/'));
+    .pipe(gulp.dest('./app/build/video/'));
+
 });
 
 // Compile SASS

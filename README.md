@@ -11,6 +11,18 @@ SCSS Starterkit working with scss, gulp, browsersync, gulp-file-include. Version
 * autoprefixer
 
 ## Quick Start
+
+First, make sure that you have installed Node.js, npm and gulp globally:
+
+### Install Node.js and npm
+https://nodejs.org/en/
+
+
+### Install Gulp
+```shell
+npm install --global gulp
+```
+### Install scss-starter-pack
 For installation, clone or download the package and open the terminal to run:
 ```shell
 

@@ -2,6 +2,10 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync').create(),
     postcss = require('gulp-postcss'),
+
+    cssmin = require('gulp-cssmin'),
+
+
     autoprefixer = require('autoprefixer'),
     fileinclude = require('gulp-file-include')
     uglify = require("gulp-uglify"),
@@ -26,6 +30,9 @@ gulp.task('sass', function() {
           'Android 2.3',
           'Android >= 4',
           'Opera >= 12']})]))
+        .pipe(gulp.dest('./app/build/css'), { sourcemaps: true })
+        .pipe(cssmin())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./app/build/css'))
         .pipe(browserSync.stream());
 });
@@ -85,7 +92,8 @@ gulp.task('copy-folders', function () {
 // Compile SASS
 gulp.task('serve', ['sass'], function() {
     browserSync.init({
-        server: "./app/build/"
+        server: "./app/build/",
+        reloadOnRestart: true,
     });
     // warch file-include for root and inc
     gulp.watch(['./app/inc/**/*.html', './app/*.html'], ['fileinclude-watch']);

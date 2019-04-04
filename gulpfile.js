@@ -2,7 +2,14 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync').create(),
     postcss = require('gulp-postcss'),
+
+    // min ma da verdere
     cssmin = require('gulp-cssmin'),
+
+    // Notification on error
+    plumber = require('gulp-plumber'),
+    notify = require("gulp-notify"),
+
     autoprefixer = require('autoprefixer'),
     fileinclude = require('gulp-file-include')
     uglify = require("gulp-uglify"),
@@ -16,6 +23,12 @@ var gulp = require('gulp'),
 // Gulp Task SASS, postcss/autoprefixer, Browsersync
 gulp.task('sass', function() {
     return gulp.src('./app/scss/main.scss')
+        .pipe(plumber({ errorHandler: function(err) {
+            notify.onError({
+                title: "Gulp error in " + err.plugin,
+                message:  err.toString()
+            })(err);
+        }}))
         .pipe(sass())
         .pipe(postcss([ autoprefixer({ browsers: [
           'Chrome >= 35',
@@ -37,6 +50,12 @@ gulp.task('sass', function() {
 // File Include
 gulp.task('fileinclude', function() {
   return gulp.src(['./app/*.html'])
+    .pipe(plumber({ errorHandler: function(err) {
+        notify.onError({
+            title: "Gulp error in " + err.plugin,
+            message:  err.toString()
+        })(err);
+    }}))
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
@@ -52,6 +71,12 @@ gulp.task('fileinclude-watch', ['fileinclude']);
 gulp.task('scripts', function () {
   var jsFsCache = fsCache('.tmp/jscache'); // save cache to .tmp/jscache
   return gulp.src(['./app/js/plugins.js', './app/js/main.js'])
+      .pipe(plumber({ errorHandler: function(err) {
+          notify.onError({
+              title: "Gulp error in " + err.plugin,
+              message:  err.toString()
+          })(err);
+      }}))
       .pipe(concat('app.js'))
       .pipe(sourcemaps.init())
       .pipe(jsFsCache)

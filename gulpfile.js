@@ -65,7 +65,7 @@ gulp.task('fileinclude', function() {
 });
 
 // Build- watch file fileinclude
-gulp.task('fileinclude-watch', ['fileinclude']);
+gulp.task('fileinclude-watch', gulp.series('fileinclude'));
 
 // Uglify - Cache
 gulp.task('scripts', function () {
@@ -113,20 +113,20 @@ gulp.task('copy-folders', function () {
 });
 
 // Compile SASS
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', gulp.series('sass', function() {
     browserSync.init({
         server: "./app/build/",
         reloadOnRestart: true,
     });
     // warch file-include for root and inc
-    gulp.watch(['./app/inc/**/*.html', './app/*.html'], ['fileinclude-watch']);
-    gulp.watch("./app/scss/**/*.scss", ['scripts', 'sass','copy-folders']);
-    gulp.watch("./app/js/**/*.js", ['scripts','copy-folders']);
+    gulp.watch(['./app/inc/**/*.html', './app/*.html'], gulp.series('fileinclude-watch'));
+    gulp.watch("./app/scss/**/*.scss", gulp.series('scripts', 'sass','copy-folders'));
+    gulp.watch("./app/js/**/*.js", gulp.series('scripts','copy-folders'));
     gulp.watch("./app/**/*.html").on('change', browserSync.reload);
-});
+}));
 
 // gulp run - generate build folder and run browserSync
-gulp.task('default', ['serve', 'fileinclude', 'copy-folders', 'scripts']);
+gulp.task('default', gulp.series('serve', 'fileinclude', 'copy-folders', 'scripts'));
 
 // gulp - generate only build folder
-gulp.task('build', ['sass', 'fileinclude', 'copy-folders', 'scripts']);
+gulp.task('build', gulp.series('sass', 'fileinclude', 'copy-folders', 'scripts'));

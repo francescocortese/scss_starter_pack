@@ -9,7 +9,7 @@
   "author": "Francesco Cortese",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.10",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^5.0.0",
@@ -24,7 +24,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
-    "stylelint": "^9.10.1"
+    "stylelint": "^13.6.1"
   },
   "dependencies": {
     "natives": "^1.1.6"

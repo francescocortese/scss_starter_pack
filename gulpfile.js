@@ -87,31 +87,6 @@ gulp.task('scripts', function () {
       .pipe(gulp.dest('./app/build/js/')).pipe(browserSync.stream());
 });
 
-// Copy Img, Fonts, JS in Build folder
-gulp.task('copy-folders', function () {
-
-    // img folder
-    del('./app/build/img/**/*');
-    gulp.src('./app/img/**/*')
-        .pipe(gulp.dest('./app/build/img/'));
-
-    // fonts folder
-    del('./app/build/fonts/**/*');
-   gulp.src('./app/fonts/**/*')
-        .pipe(gulp.dest('./app/build/fonts/'));
-
-    // JS folder
-    del('./app/build/js/**/*');
-    gulp.src(['./app/js/**/*','!./app/js/main.js','!./app/js/plugins.js'])
-        .pipe(gulp.dest('./app/build/js/'));
-
-    // Video folder
-    del('./app/build/video/**/*');
-    gulp.src('./app/video/**/*')
-    .pipe(gulp.dest('./app/build/video/'));
-
-});
-
 // Compile SASS
 gulp.task('serve', gulp.series('sass', function() {
     browserSync.init({
@@ -120,13 +95,13 @@ gulp.task('serve', gulp.series('sass', function() {
     });
     // warch file-include for root and inc
     gulp.watch(['./app/inc/**/*.html', './app/*.html'], gulp.series('fileinclude-watch'));
-    gulp.watch("./app/scss/**/*.scss", gulp.series('scripts', 'sass','copy-folders'));
-    gulp.watch("./app/js/**/*.js", gulp.series('scripts'/*'copy-folders'*/));
+    gulp.watch("./app/scss/**/*.scss", gulp.series('scripts', 'sass'));
+    gulp.watch("./app/js/**/*.js", gulp.series('scripts'));
     gulp.watch("./app/**/*.html").on('change', browserSync.reload);
 }));
 
 // gulp run - generate build folder and run browserSync
-gulp.task('default', gulp.series('serve', 'fileinclude', 'copy-folders', 'scripts'));
+gulp.task('default', gulp.series('serve', 'fileinclude', 'scripts'));
 
 // gulp - generate only build folder
-gulp.task('build', gulp.series('sass', 'fileinclude', 'copy-folders', 'scripts'));
+gulp.task('build', gulp.series('sass', 'fileinclude', 'scripts'));

@@ -9,7 +9,7 @@ SCSS Starterkit working with scss, gulp, browsersync, gulp-file-include. Version
 * gulp-uglify
 * stylelint
 * autoprefixer
-* gulp-cssmin
+* gulp-clean-css
 
 ## Quick Start
 
@@ -53,17 +53,16 @@ Inside the app there is all you need for your project
    ├── build                  # Build folder
    │   ├── css                # CSS builded files from SCSS folder
    │   └── js                 # JS folder with app.min.js(plugins.js + main.js) builded from ./app/js/ folder
-   │   └── ...                 # JS folder with app.min.js(plugins.js + main.js) builded from ./app/js/ folder
+   │   └── img                # Your img folder or video, fonts, etc.
+   │   └── ...                # JS folder with app.min.js(plugins.js + main.js) builded from ./app/js/ folder
    ├── inc                    # Include folder via gulp-file-include (_header.html, _footer.html, etc.)
    ├── js                     # Test files (alternatively `spec` or `tests`)
    │   ├── main.js            # Your scripts
    │   └──  plugins.js        # Your JQuery plugins
-   ├── img                     
-   │   ├── main.js            # Your scripts
-   │   └── plugins.js         # Your JQuery plugins
    ├── scss                     
-   │   ├── bootstrap          # All Bootstrap style and scss files
-   │   ├── main.scss          # Main file with all the @import      
+   │   ├── main.scss          # Main file with all the @import    
+   │   ├── _mobile.scss       # Style for tablet breakpoint  
+   │   ├── _mobile.scss       # Style for mobile breakpoint  
    │   └── ...
    └── ...
 

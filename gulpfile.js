@@ -3,9 +3,6 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     postcss = require('gulp-postcss'),
 
-    // min ma da verdere
-    //cssmin = require('gulp-cssmin'),
-
     // Notification on error
     plumber = require('gulp-plumber'),
     notify = require("gulp-notify"),
@@ -21,7 +18,6 @@ var gulp = require('gulp'),
 
     //min css
     cleanCSS = require('gulp-clean-css');
-
 
 
 // Gulp Task SASS, postcss/autoprefixer, Browsersync
@@ -116,9 +112,6 @@ gulp.task('copy-folders', function () {
 
 });
 
-
-
-
 // Compile SASS
 gulp.task('serve', gulp.series('sass', function() {
     browserSync.init({
@@ -127,7 +120,7 @@ gulp.task('serve', gulp.series('sass', function() {
     });
     // warch file-include for root and inc
     gulp.watch(['./app/inc/**/*.html', './app/*.html'], gulp.series('fileinclude-watch'));
-    gulp.watch("./app/scss/**/*.scss", gulp.series('scripts', 'sass'/*,'copy-folders'*/));
+    gulp.watch("./app/scss/**/*.scss", gulp.series('scripts', 'sass','copy-folders'));
     gulp.watch("./app/js/**/*.js", gulp.series('scripts'/*'copy-folders'*/));
     gulp.watch("./app/**/*.html").on('change', browserSync.reload);
 }));

@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
 
     // min ma da verdere
-    cssmin = require('gulp-cssmin'),
+    //cssmin = require('gulp-cssmin'),
 
     // Notification on error
     plumber = require('gulp-plumber'),
@@ -41,9 +41,9 @@ gulp.task('sass', function() {
           'Android >= 4',
           'Opera >= 12']})]))
         .pipe(gulp.dest('./app/build/css'), { sourcemaps: true })
-        .pipe(cssmin())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('./app/build/css'))
+        //.pipe(cssmin())
+        //.pipe(rename({suffix: '.min'}))
+        //.pipe(gulp.dest('./app/build/css'))
         .pipe(browserSync.stream());
 });
 

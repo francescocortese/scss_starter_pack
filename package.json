@@ -9,12 +9,10 @@
   "author": "Francesco Cortese",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.26.10",
     "del": "^3.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-cssmin": "^0.2.0",
     "gulp-file-include": "^2.2.2",
     "gulp-fs-cache": "^0.1.0",
     "gulp-notify": "^3.2.0",
@@ -27,6 +25,7 @@
     "stylelint": "^13.6.1"
   },
   "dependencies": {
+    "browser-sync": "^2.26.12",
     "clean-css": "^4.1.11",
     "lodash": "^4.17.19",
     "lodash.template": "^4.5.0",

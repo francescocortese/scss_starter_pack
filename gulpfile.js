@@ -17,7 +17,11 @@ var gulp = require('gulp'),
     fsCache = require('gulp-fs-cache'),
     rename = require("gulp-rename"),
     concat = require('gulp-concat'),
-    del = require('del');
+    del = require('del'),
+
+    //min css
+    cleanCSS = require('gulp-clean-css');
+
 
 
 // Gulp Task SASS, postcss/autoprefixer, Browsersync
@@ -41,9 +45,9 @@ gulp.task('sass', function() {
           'Android >= 4',
           'Opera >= 12']})]))
         .pipe(gulp.dest('./app/build/css'), { sourcemaps: true })
-        //.pipe(cssmin())
-        //.pipe(rename({suffix: '.min'}))
-        //.pipe(gulp.dest('./app/build/css'))
+        .pipe(cleanCSS())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('./app/build/css'))
         .pipe(browserSync.stream());
 });
 
@@ -97,7 +101,7 @@ gulp.task('copy-folders', function () {
 
     // fonts folder
     del('./app/build/fonts/**/*');
-    gulp.src('./app/fonts/**/*')
+   gulp.src('./app/fonts/**/*')
         .pipe(gulp.dest('./app/build/fonts/'));
 
     // JS folder
@@ -112,6 +116,9 @@ gulp.task('copy-folders', function () {
 
 });
 
+
+
+
 // Compile SASS
 gulp.task('serve', gulp.series('sass', function() {
     browserSync.init({
@@ -120,8 +127,8 @@ gulp.task('serve', gulp.series('sass', function() {
     });
     // warch file-include for root and inc
     gulp.watch(['./app/inc/**/*.html', './app/*.html'], gulp.series('fileinclude-watch'));
-    gulp.watch("./app/scss/**/*.scss", gulp.series('scripts', 'sass','copy-folders'));
-    gulp.watch("./app/js/**/*.js", gulp.series('scripts','copy-folders'));
+    gulp.watch("./app/scss/**/*.scss", gulp.series('scripts', 'sass'/*,'copy-folders'*/));
+    gulp.watch("./app/js/**/*.js", gulp.series('scripts'/*'copy-folders'*/));
     gulp.watch("./app/**/*.html").on('change', browserSync.reload);
 }));
 

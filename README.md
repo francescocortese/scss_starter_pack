@@ -33,13 +33,10 @@ cd /main-folder-of-your-project
 # Install browserSync and all the node dependencies that we need
 npm install
 
-# Start the gulp task and browserSync
-npm start
-
-# Gulp default generate the build folder
+# Gulp default generate the build folder and start browserSync
 gulp
 
-# Gulp run generate the build folder and run browserSync
+# Gulp run only generate the build folder
 gulp run
 
 ```

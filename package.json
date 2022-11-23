@@ -26,7 +26,7 @@
     "stylelint": "^13.13.1"
   },
   "dependencies": {
-    "browser-sync": "^2.27.7",
+    "browser-sync": "^2.27.10",
     "clean-css": "^4.2.4",
     "lodash": "^4.17.21",
     "lodash.template": "^4.5.0",
